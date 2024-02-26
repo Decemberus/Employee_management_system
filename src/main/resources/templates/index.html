@@ -16,6 +16,7 @@
 <body class="text-center">
 <form class="form-signin" th:action="@{/user/login}" method="post">
     <img class="mb-4" th:src="@{/asserts/img/bootstrap-solid.svg}" alt="" width="72" height="72">
+<!--    这里刚好对我我们internationalize之前的配置-->
     <h1 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}">Please sign in</h1>
     <!--如果msg的值为空则不显示消息-->
     <p style="color: #ff0000" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
@@ -30,6 +31,7 @@
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">[[#{login.btn}]]</button>
     <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+<!--    加入中英文切换的按钮-->
     <a class="btn btn-sm" th:href="@{/index.html(l='zn_CN')}">中文</a>
     <a class="btn btn-sm" th:href="@{/index.html(l='en_US')}">English</a>
 </form>

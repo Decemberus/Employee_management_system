@@ -2,7 +2,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <!--头部导航栏-->
-<!--顶部导航栏-->
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0" th:fragment="topbar">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="http://getbootstrap.com/docs/4.0/examples/dashboard/#">[[${session.loginuser}]]</a>
     <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
@@ -15,7 +14,6 @@
 
 
 <!--侧边栏-->
-<!--侧边栏-->
 <nav class="col-md-2 d-none d-md-block bg-light sidebar" th:fragment="sidebar">
     <div class="sidebar-sticky">
         <ul class="nav flex-column">
@@ -27,7 +25,7 @@
                         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                         <polyline points="9 22 9 12 15 12 15 22"></polyline>
                     </svg>
-                    首页 <span class="sr-only">(current)</span>
+                    Home page <span class="sr-only">(current)</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -63,7 +61,7 @@
                         <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                         <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                     </svg>
-                    员工管理
+                    customer management
                 </a>
             </li>
             <li class="nav-item">

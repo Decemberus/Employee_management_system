@@ -44,6 +44,7 @@
 
 <body>
 <div th:replace="~{commons/commons::topbar}"></div>
+<!--<div th:assert="~{commons/commons::topbar}"></div>-->
 
 <div class="container-fluid">
     <div class="row">
@@ -53,8 +54,8 @@
 
             <form class="form-inline" style="float: left;">
                 <h2>员工列表</h2>
-                <p style="width: 650px;"></p>
-                <a class="btn btn-sm btn-success" th:href="@{/emp}">添加</a>
+                <p style="width: 200px;"></p>
+                <a class="btn btn-sm btn-success" th:href="@{/emp}">添加员工</a>
             </form>
 
             <div class="table-responsive">
@@ -78,6 +79,7 @@
                         <td th:text="${emp.getGender()==0?'女':'男'}"></td>
                         <td th:text="${emp.getDepartment().getDepartmentName()}"></td>
                         <td th:text="${#dates.format(emp.getBirth(),'yyyy-MM-dd')}"></td>
+<!--                        这地方没有错误-->
                         <td>
                             <a class="btn btn-sm btn-primary" th:href="@{/upemp/}+${emp.getId()}">编辑</a>
                             <a class="btn btn-sm btn-danger" th:href="@{/deleteEmp/}+${emp.getId()}">删除</a>

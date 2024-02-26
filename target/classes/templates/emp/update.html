@@ -51,6 +51,7 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <form class="form-horizontal" th:action="@{/updateEmp}" method="post">
+<!--                修改的时候把id一块给带过来，避免他一直自增-->
                 <input type="hidden" name="id" th:value="${emp.getId()}">
                 <div class="form-group">
                     <label class="col-sm-2 control-label">名字</label>

@@ -16,59 +16,52 @@ import java.util.Collection;
 
 @Controller
 public class EmployeeController {
-    @Autowired
-    DepartmentDao departmentDao;
 
     @Autowired
     EmployeeDao employeeDao;
 
-    @RequestMapping("/emps")
-    public String list(Model model) {
-        Collection<Employee> employees = employeeDao.getAll();
-        model.addAttribute("emps", employees);
-        return "emp/list";
-    }
+    @Autowired
+    DepartmentDao departmentDao;
 
+    //列举所有的员工
+    @RequestMapping("emps")
+    public String list(Model model){
+        Collection<Employee> employees = employeeDao.getAll();
+        model.addAttribute("emps",employees);
+        return "emp/list";
+
+    }
     @GetMapping("/emp")
-    public String toAdd(Model model) {
-        //查出部门的所有信息
-        Collection<Department> departments = departmentDao.getDepartment();
-        model.addAttribute("departments", departments);
+    public String toaddpage(Model model){
+        Collection<Department> department = departmentDao.getDepartment();
+        model.addAttribute("department",department);
         return "emp/add";
     }
 
     @PostMapping("/emp")
-    public String add(Employee employee) {
-        System.out.println(employee);
-//        添加的操作
+    public String addEmp(Employee employee){
         employeeDao.save(employee);
         return "redirect:/emps";
     }
 
-    //去员工的修改页面
-    @GetMapping("/upemp/{id}")
-    public String toupdataEmp(@PathVariable("id") Integer id, Model model) {
-        //查出原来的数据
-        Employee employee = employeeDao.getEmployeeById(id);
-        model.addAttribute("emp", employee);
-
-        Collection<Department> departments = departmentDao.getDepartment();
-        model.addAttribute("departments", departments);
-
+    @GetMapping("/emp/{id}")
+    public String toUpdateEmp(@PathVariable("id") Integer id,Model model){
+        Employee employeeById = employeeDao.getEmployeeById(id);
+        Collection<Department> department = departmentDao.getDepartment();
+        model.addAttribute("department",department);
+        //数据返回给前端
+        model.addAttribute("emp",employeeById);
         return "emp/update";
     }
-
-    @PostMapping("/updateEmp")
-    public String updataEmp(Employee employee) {
+    @RequestMapping("/updateEmp")
+    public String updateEmp(Employee employee){
         employeeDao.save(employee);
         return "redirect:/emps";
     }
-
     //删除员工
     @GetMapping("/deleteEmp/{id}")
     public String deleteEmp(@PathVariable("id") int id) {
         employeeDao.delete(id);
         return "redirect:/emps";
     }
-
 }
